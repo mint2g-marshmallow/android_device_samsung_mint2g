@@ -30,7 +30,7 @@ PRODUCT_PACKAGES += \
 # Camera HAL
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    camera.device@3.2-impl \
+    camera-device@1.0-impl-legacy \
 	camera.sc8810 \
 	libmemoryheapion
 
