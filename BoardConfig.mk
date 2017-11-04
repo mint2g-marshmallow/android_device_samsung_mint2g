@@ -40,5 +40,8 @@ TARGET_BOOTLOADER_BOARD_NAME := mint2g
 TARGET_BOARD_PLATFORM := sc8810
 BOARD_GLOBAL_CFLAGS += -DSPRD_HARDWARE
 
+# HIDL manifest
+DEVICE_MANIFEST_FILE := device/samsung/mint2g/manifest.xml
+
 # Include board config fragments
 -include device/samsung/mint2g/board/*.mk
