@@ -43,7 +43,7 @@ void * eng_sd_log(void * args){
 	int card_log_fd = -1;
 	ssize_t r_cnt, w_cnt;
 	int res,n,count;
-	char cardlog_property[8];
+	char cardlog_property[PROPERTY_VALUE_MAX];
 
 	ENG_LOG("ENG SD LOG");
 	while ( 1 ) {

@@ -105,7 +105,7 @@ static void write_to_randmacfile(char *btmac, char *wifimac)
 	int fd;
 	char buf[80];
 
-	fd = open(MAC_RAND_FILE, O_CREAT|O_TRUNC|O_RDWR);
+	fd = open(MAC_RAND_FILE, O_CREAT|O_TRUNC|O_RDWR,0644);
 	if( fd >= 0) {
 		memset(buf, 0, sizeof(buf));
 		sprintf(buf, "%s;%s",btmac, wifimac);
@@ -358,7 +358,7 @@ static void write_mac2file(char *wifimac, char *btmac)
 	int fd;
 
 	//wifi mac
-	fd = open(WIFI_MAC_FILE, O_CREAT|O_RDWR|O_TRUNC);
+	fd = open(WIFI_MAC_FILE, O_CREAT|O_RDWR|O_TRUNC,0644);
 	ALOGD("%s: mac=%s, fd[%s]=%d",__FUNCTION__, wifimac, WIFI_MAC_FILE, fd);
 	if(fd > 0) {
 		chmod(WIFI_MAC_FILE,0666);
@@ -367,7 +367,7 @@ static void write_mac2file(char *wifimac, char *btmac)
 	}
 
 	//bt mac
-	fd = open(BT_MAC_FILE, O_CREAT|O_RDWR|O_TRUNC);
+	fd = open(BT_MAC_FILE, O_CREAT|O_RDWR|O_TRUNC,0644);
 	ALOGD("%s: mac=%s, fd[%s]=%d",__FUNCTION__, btmac, BT_MAC_FILE, fd);
 	if(fd > 0) {
 		chmod(BT_MAC_FILE,0666);

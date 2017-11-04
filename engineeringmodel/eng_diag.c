@@ -495,7 +495,7 @@ int eng_diag_getver(unsigned char *buf,int len, char *rsp)
 	int maxlen=248;
 	int rlen = 0;
 	MSG_HEAD_T head,*head_ptr=NULL;
-	char androidver[16];
+	char androidver[PROPERTY_VALUE_MAX];
 	char sprdver[256];
 	char modemver[512];
 	char *ptr;

@@ -364,7 +364,7 @@ static void *eng_modemreset_thread(void *par)
 {
     int soc_fd,pipe_fd, n, ret, status;
 	char cmdrst[2]={'z',0x0a};
-	char modemrst_property[8];
+	char modemrst_property[PROPERTY_VALUE_MAX];
 	char buffer[MODEM_SOCKET_BUFFER_SIZE];
 
 	memset(modemrst_property, 0, sizeof(modemrst_property));
@@ -418,7 +418,7 @@ void eng_check_factorymode_fornand(void)
 	int ret;
 	int fd;
 	int status = eng_sql_string2int_get(ENG_TESTMODE);
-	char status_buf[8];
+	char status_buf[PROPERTY_VALUE_MAX];
 	char config_property[64];
 
 
@@ -452,7 +452,7 @@ void eng_check_factorymode_fornand(void)
 	}
 #endif
 
-	fd=open(ENG_FACOTRYSYNC_FILE, O_RDWR|O_CREAT|O_TRUNC);
+	fd=open(ENG_FACOTRYSYNC_FILE, O_RDWR|O_CREAT|O_TRUNC, 0644);
 	if(fd > 0)
 		close(fd);
 }
@@ -463,7 +463,7 @@ void eng_check_factorymode_formmc(void)
 	int ret;
 	int fd;
 	int status = eng_sql_string2int_get(ENG_TESTMODE);
-	char status_buf[8];
+	char status_buf[PROPERTY_VALUE_MAX];
 
 	do {
 		usleep(100*1000);
@@ -473,7 +473,7 @@ void eng_check_factorymode_formmc(void)
 		LOGD("%s: %s is %s, n=%d\n",__FUNCTION__, RAWDATA_PROPERTY, status_buf,ret);
 	}while(ret!=1);
 	
-	fd=open(ENG_FACOTRYMODE_FILE, O_RDWR|O_CREAT|O_TRUNC);
+	fd=open(ENG_FACOTRYMODE_FILE, O_RDWR|O_CREAT|O_TRUNC,0644);
 
 	LOGD("%s: fd=%d, status=%x\n",__FUNCTION__, fd, status);
 
@@ -493,7 +493,7 @@ void eng_check_factorymode_formmc(void)
 		close(fd);
 	}
 
-	fd=open(ENG_FACOTRYSYNC_FILE, O_RDWR|O_CREAT|O_TRUNC);
+	fd=open(ENG_FACOTRYSYNC_FILE, O_RDWR|O_CREAT|O_TRUNC, 0644);
 	if(fd > 0)
 		close(fd);
 }

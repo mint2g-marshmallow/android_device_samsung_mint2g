@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <cutils/properties.h>
 
-#include "hardware_legacy/wifi.h"
+// #include <hardware_legacy/wifi_test.h>
 #include "engapi.h"
 #include "engopt.h"
 #include "engat.h"
@@ -87,7 +87,7 @@ static void eng_simcard_poweron(int index)
 //pre power sim on
 static void eng_pre_powersimon(void)
 {
-    char simtype[8];
+    char simtype[PROPERTY_VALUE_MAX];
     int sim;
     memset(simtype, 0, sizeof(simtype));
     property_get("persist.msms.phone_count", simtype, "");
@@ -339,7 +339,7 @@ static int test_atv(int test_item, char *ret_buf)
 static int test_bt(int test_item, char *ret_buf)
 {
     int ret = 0;
-    char buf[20] = "";
+    char buf[PROPERTY_VALUE_MAX] = "";
 
     ENG_LOG("bt\n");
 
@@ -356,7 +356,7 @@ static int test_bt(int test_item, char *ret_buf)
 
 static int test_wifi(int test_item, char *ret_buf)
 {
-    char buff[20] = { 0 };
+    char buff[PROPERTY_VALUE_MAX] = { 0 };
     ENG_LOG("wifi");
 
     property_get("wifi.init", buff, "");
@@ -375,7 +375,7 @@ static int test_wifi(int test_item, char *ret_buf)
 
 static int test_gps(int test_item, char *ret_buf)
 {
-    char buff[20] = { 0 };
+    char buff[PROPERTY_VALUE_MAX] = { 0 };
     ENG_LOG("gps");
 
     property_get("gps.init", buff, "");

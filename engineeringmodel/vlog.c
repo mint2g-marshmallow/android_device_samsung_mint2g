@@ -50,7 +50,7 @@ void *eng_vlog_thread(void *x)
 	int card_log_fd = -1;
 	ssize_t r_cnt, w_cnt;
 	int res,n;
-	char cardlog_property[8];
+	char cardlog_property[PROPERTY_VALUE_MAX];
 	char log_name[40];
 	time_t now;
     int wait_cnt = 0;
