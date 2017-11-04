@@ -4,7 +4,6 @@ PRODUCT_COPY_FILES += \
 	 $(LOCAL_PATH)/codec_pga.xml:system/etc/codec_pga.xml\
 	 $(LOCAL_PATH)/tiny_hw.xml:system/etc/tiny_hw.xml
 
-
 # Media config
 MEDIA_CONFIGS := \
 	$(LOCAL_PATH)/media_codecs.xml \
@@ -14,7 +13,7 @@ MEDIA_CONFIGS := \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml
 
 PRODUCT_COPY_FILES += \
-$(foreach f,$(MEDIA_CONFIGS),$(f):system/etc/$(notdir $(f)))
+    $(foreach f,$(MEDIA_CONFIGS),$(f):system/etc/$(notdir $(f)))
 
 # Web
 PRODUCT_PACKAGES += \
@@ -40,3 +39,6 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PACKAGES += \
 	libstagefrighthw
+
+RODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
